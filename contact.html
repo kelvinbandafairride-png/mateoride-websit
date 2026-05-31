@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — Mateo Ride #1 Partner</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  background:#050505;
+  overflow-x:hidden;
+  color:#fff;
+  font-family:'Poppins',sans-serif;
+}
+
+@keyframes neonPulse{
+  0%,100%{box-shadow:0 0 15px rgba(255,0,0,0.3),0 0 40px rgba(255,0,0,0.1)}
+  50%{box-shadow:0 0 30px rgba(255,0,0,0.6),0 0 70px rgba(255,0,0,0.2)}
+}
+@keyframes fadeUp{
+  0%{opacity:0;transform:translateY(30px)}
+  100%{opacity:1;transform:translateY(0)}
+}
+
+.page-wrap{
+  min-height:100vh;
+  background:
+    radial-gradient(ellipse at 25% 40%, rgba(150,0,0,0.15) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 30%, rgba(200,0,0,0.1) 0%, transparent 40%),
+    linear-gradient(180deg,#0a0000 0%,#120000 25%,#080000 55%,#050000 100%);
+  padding:40px 20px 60px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.back-btn{
+  align-self:flex-start;
+  color:#fff;
+  text-decoration:none;
+  font-size:16px;
+  font-weight:600;
+  display:inline-flex;align-items:center;gap:10px;
+  padding:12px 24px;
+  background:rgba(255,0,0,0.1);
+  border:1px solid rgba(255,0,0,0.2);
+  border-radius:40px;
+  transition:0.3s;
+  margin-bottom:30px;
+}
+.back-btn:hover{
+  background:rgba(255,0,0,0.2);
+  transform:translateX(-4px);
+}
+
+.contact-card{
+  width:100%;
+  max-width:1100px;
+  background:rgba(0,0,0,0.5);
+  backdrop-filter:blur(20px);
+  border:2px solid rgba(255,0,0,0.25);
+  border-radius:24px;
+  padding:50px;
+  box-shadow:0 0 50px rgba(255,0,0,0.08);
+  animation:fadeUp 0.6s ease-out;
+  display:grid;
+  grid-template-columns:1.3fr 1fr;
+  gap:50px;
+}
+
+.contact-title{
+  grid-column:1/-1;
+  text-align:center;
+  margin-bottom:10px;
+}
+.contact-title h1{
+  font-family:'Anton',sans-serif;
+  font-size:clamp(32px,5vw,60px);
+  text-transform:uppercase;
+  letter-spacing:6px;
+  color:#fff;
+}
+.contact-title h1 span{color:#ff0000;text-shadow:0 0 30px rgba(255,0,0,0.3)}
+.contact-title p{
+  color:rgba(255,255,255,0.7);
+  font-size:clamp(14px,1.4vw,18px);
+  margin-top:6px;
+}
+
+/* ===== FORM ===== */
+.form-group{
+  margin-bottom:20px;
+}
+.form-group label{
+  display:block;
+  font-size:14px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  margin-bottom:6px;
+  color:rgba(255,255,255,0.8);
+}
+.form-group label .req{color:#ff0000}
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:100%;
+  padding:14px 18px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,0,0,0.2);
+  border-radius:14px;
+  color:#fff;
+  font-family:'Poppins',sans-serif;
+  font-size:15px;
+  outline:none;
+  transition:0.3s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+  border-color:#ff0000;
+  box-shadow:0 0 20px rgba(255,0,0,0.1);
+  background:rgba(255,255,255,0.06);
+}
+.form-group select option{background:#1a0000;color:#fff}
+.form-group textarea{min-height:120px;resize:vertical}
+
+.submit-btn{
+  width:100%;
+  padding:16px;
+  background:linear-gradient(135deg,#cc0000,#8b0000);
+  color:#fff;
+  font-family:'Poppins',sans-serif;
+  font-weight:700;
+  font-size:18px;
+  text-transform:uppercase;
+  letter-spacing:3px;
+  border:none;
+  border-radius:16px;
+  cursor:pointer;
+  transition:0.4s;
+  box-shadow:0 0 30px rgba(255,0,0,0.2);
+}
+.submit-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 0 50px rgba(255,0,0,0.4);
+  background:linear-gradient(135deg,#e60000,#a00000);
+}
+
+/* ===== CONTACT INFO ===== */
+.info-side{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+.info-card{
+  background:rgba(255,0,0,0.04);
+  border:1px solid rgba(255,0,0,0.15);
+  border-radius:18px;
+  padding:22px 24px;
+  transition:0.3s;
+}
+.info-card:hover{
+  border-color:rgba(255,0,0,0.35);
+  background:rgba(255,0,0,0.06);
+}
+.info-card .ic-head{
+  display:flex;align-items:center;gap:12px;
+  font-size:16px;font-weight:700;text-transform:uppercase;
+  letter-spacing:1px;
+  margin-bottom:12px;
+}
+.info-card .ic-head i{color:#ff0000;font-size:20px;width:24px;text-align:center}
+.info-card .ic-body{
+  font-size:15px;
+  color:rgba(255,255,255,0.8);
+  line-height:1.7;
+  padding-left:36px;
+}
+.info-card .ic-body a{
+  color:#fff;
+  text-decoration:none;
+  display:block;
+  padding:4px 0;
+  transition:0.3s;
+}
+.info-card .ic-body a:hover{color:#ff0000}
+.info-card .ic-body .wa-link{color:#25d366}
+.info-card .ic-body .wa-link:hover{color:#1da851}
+
+.divider{
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,0,0,0.2),transparent);
+  margin:10px 0;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:800px){
+  .contact-card{
+    grid-template-columns:1fr;
+    padding:30px 20px;
+    gap:30px;
+  }
+  .back-btn{margin-bottom:20px}
+}
+@media(max-width:480px){
+  .page-wrap{padding:20px 12px 40px}
+  .contact-card{padding:20px 14px;border-radius:16px}
+  .form-group input,.form-group select,.form-group textarea{padding:12px 14px;font-size:14px}
+  .info-card{padding:16px 18px}
+}
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> BACK TO HOME</a>
+
+  <div class="contact-card">
+    <div class="contact-title">
+      <h1>CONTACT <span>US</span></h1>
+      <p>Send us a message and we'll get back to you</p>
+    </div>
+
+    <!-- FORM -->
+    <div>
+      <form action="https://formsubmit.co/mateo.kigali@gmail.com" method="POST">
+        <div class="form-group">
+          <label>Full Name <span class="req">*</span></label>
+          <input type="text" name="name" placeholder="Your full name" required>
+        </div>
+        <div class="form-group">
+          <label>Phone Number <span class="req">*</span></label>
+          <input type="tel" name="phone" placeholder="+260 XXX XXX XXX" required>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" name="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <select name="subject">
+            <option value="">Select a topic...</option>
+            <option value="Registration">Registration</option>
+            <option value="Partnership">Partnership</option>
+            <option value="Support">Support</option>
+            <option value="Inquiry">General Inquiry</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message <span class="req">*</span></label>
+          <textarea name="message" placeholder="Write your message here..." required></textarea>
+        </div>
+
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://mateoride-websit.onrender.com/contact.html?sent=1">
+
+        <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i>&nbsp; SEND MESSAGE</button>
+      </form>
+    </div>
+
+    <!-- CONTACT INFO -->
+    <div class="info-side">
+
+      <div class="info-card">
+        <div class="ic-head"><i class="fab fa-whatsapp"></i> WhatsApp</div>
+        <div class="ic-body">
+          <a href="https://wa.me/260799984010" target="_blank" class="wa-link"><i class="fab fa-whatsapp"></i> +260 799 984 010</a>
+          <a href="https://wa.me/260761412670" target="_blank" class="wa-link"><i class="fab fa-whatsapp"></i> +260 761 412 670</a>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="ic-head"><i class="fas fa-envelope"></i> Email</div>
+        <div class="ic-body">
+          <a href="mailto:mateo.kigali@gmail.com">mateo.kigali@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="ic-head"><i class="fas fa-map-marker-alt"></i> Office</div>
+        <div class="ic-body">
+          Kigali, Along Stone Road KN87<br>
+          Next to Okapi Hotel
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="ic-head"><i class="fab fa-instagram"></i> Follow Us</div>
+        <div class="ic-body">
+          <a href="https://instagram.com/mateo.kigali" target="_blank">@mateo.kigali</a>
+          <a href="https://tiktok.com/@yango.mateorides" target="_blank">@yango.mateorides</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
