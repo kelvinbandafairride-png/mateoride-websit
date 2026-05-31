@@ -202,8 +202,8 @@ body{
 }
 
 .oval-badge{
-  display:inline-flex;align-items:center;gap:14px;
-  padding:12px 28px;
+  display:inline-flex;align-items:center;gap:20px;
+  padding:20px 36px;
   border-radius:50px;
   background:linear-gradient(135deg,rgba(255,255,255,0.07),rgba(255,0,0,0.05));
   border:1px solid rgba(255,0,0,0.25);
@@ -211,8 +211,8 @@ body{
   margin-bottom:22px;
   box-shadow:0 0 20px rgba(255,0,0,0.08);
 }
-.oval-badge img{width:60px;height:60px;border-radius:8px;object-fit:contain}
-.oval-badge span{font-size:16px;font-weight:800;color:#fff;letter-spacing:2px}
+.oval-badge img{width:160px;height:auto;border-radius:10px;object-fit:contain}
+.oval-badge span{font-size:22px;font-weight:800;color:#fff;letter-spacing:2px}
 
 .slogan-text{}
 .slogan-text .l{
@@ -241,7 +241,6 @@ body{
   position:relative;
   z-index:2;
   filter:
-    hue-rotate(210deg) saturate(1.5) brightness(1.05)
     drop-shadow(0 0 30px rgba(255,0,0,0.2))
     drop-shadow(0 0 60px rgba(255,0,0,0.08));
   animation:float 5s ease-in-out infinite;
@@ -277,19 +276,50 @@ body{
 }
 
 .car-badge-label{
-  display:inline-flex;align-items:center;gap:8px;
-  margin-top:16px;
-  padding:8px 24px;
+  display:inline-flex;align-items:center;gap:12px;
+  margin-top:20px;
+  padding:12px 30px;
   background:rgba(255,0,0,0.07);
   border:1px solid rgba(255,0,0,0.2);
   border-radius:50px;
   color:#ff4444;
-  font-size:14px;font-weight:700;
+  font-size:18px;font-weight:700;
   letter-spacing:2px;
   backdrop-filter:blur(8px);
   box-shadow:0 0 15px rgba(255,0,0,0.06);
 }
-.car-badge-label img{width:40px;height:40px;border-radius:6px;object-fit:contain}
+.car-badge-label img{width:80px;height:auto;border-radius:6px;object-fit:contain}
+
+/* car branding overlays */
+.car-brand{
+  position:absolute;z-index:5;pointer-events:none;
+  font-family:'Anton',sans-serif;
+  text-transform:uppercase;
+  letter-spacing:2px;
+}
+.car-brand.mateoride{
+  top:16%;left:12%;
+  font-size:clamp(12px,1.6vw,22px);
+  color:#fff;
+  background:linear-gradient(135deg,rgba(200,0,0,0.7),rgba(100,0,0,0.5));
+  padding:3px 12px;
+  border-radius:4px;
+  border:1px solid rgba(255,0,0,0.3);
+  backdrop-filter:blur(2px);
+  transform:rotate(-2deg);
+}
+.car-brand.yango{
+  bottom:18%;right:10%;
+  font-size:clamp(14px,1.8vw,26px);
+  color:#ff0000;
+  text-shadow:0 0 15px rgba(255,0,0,0.5),0 0 30px rgba(255,0,0,0.2);
+  background:rgba(0,0,0,0.4);
+  padding:2px 14px;
+  border-radius:4px;
+  border:1px solid rgba(255,0,0,0.25);
+  backdrop-filter:blur(2px);
+  transform:rotate(1deg);
+}
 
 /* ===== CONTENT BELOW ===== */
 .content-wrap{
@@ -572,7 +602,7 @@ body{
       </div>
 
       <div class="oval-badge">
-        <img src="https://i.postimg.cc/pd0k8gqn/Whats-App-Image-2026-05-31-at-18-12-38-(1).jpg?v=2" alt="">
+        <img src="https://i.postimg.cc/7LHrqGB2/Whats-App-Image-2026-05-31-at-18-12-38-1-removebg-preview.png" alt="">
         <span>MATEO RIDE</span>
       </div>
 
@@ -588,7 +618,7 @@ body{
     <div class="right-side">
 
       <div class="car-container">
-        <img class="car-img" src="https://pngimg.com/d/hyundai_PNG11233.png" alt="">
+        <img class="car-img" src="https://i.postimg.cc/FR0yGz4T/Whats-App-Image-2026-05-31-at-20-14-34-removebg-preview.png" alt="">
 
         <div class="car-glow-bottom"></div>
         <div class="ground-reflect"></div>
@@ -596,7 +626,7 @@ body{
       </div>
 
       <div class="car-badge-label">
-        <img src="https://i.postimg.cc/pd0k8gqn/Whats-App-Image-2026-05-31-at-18-12-38-(1).jpg?v=2" alt="">
+        <img src="https://i.postimg.cc/7LHrqGB2/Whats-App-Image-2026-05-31-at-18-12-38-1-removebg-preview.png" alt="">
         YANGO LET'S GO!
       </div>
 
