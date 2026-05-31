@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YANGO &mdash; Mateo Ride #1 Partner</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  background:#050505;
+  overflow-x:hidden;
+  color:#fff;
+  font-family:'Poppins',sans-serif;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes pulseGlow{0%,100%{opacity:0.4}50%{opacity:1}}
+@keyframes flicker{
+  0%,100%{opacity:1}92%{opacity:1}93%{opacity:0.25}94%{opacity:0.7}95%{opacity:0.15}96%{opacity:1}
+}
+@keyframes streak{
+  0%{transform:translateX(-100%)}100%{transform:translateX(100%)}
+}
+@keyframes neonPulse{
+  0%,100%{box-shadow:0 0 15px rgba(255,0,0,0.3),0 0 40px rgba(255,0,0,0.1)}
+  50%{box-shadow:0 0 30px rgba(255,0,0,0.6),0 0 70px rgba(255,0,0,0.2)}
+}
+@keyframes sweep{
+  0%{left:-100%}100%{left:200%}
+}
+
+/* ===== HERO ===== */
+.hero{
+  width:100%;
+  min-height:100vh;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse at 25% 40%, rgba(150,0,0,0.15) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 30%, rgba(200,0,0,0.1) 0%, transparent 40%),
+    linear-gradient(180deg,#0a0000 0%,#120000 25%,#080000 55%,#050000 100%);
+  display:flex;
+  flex-direction:column;
+  padding:0 40px;
+}
+
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at center,transparent 35%,rgba(0,0,0,0.85) 100%);
+  z-index:1;pointer-events:none;
+}
+
+/* ===== CITY SKYLINE ===== */
+.city-skyline{
+  position:absolute;top:0;left:0;width:100%;height:55%;
+  background:
+    linear-gradient(to top,transparent 30%,rgba(5,0,0,1) 80%),
+    repeating-linear-gradient(
+      to right,
+      transparent 0px, transparent 3px,
+      rgba(255,0,0,0.06) 3px, rgba(255,0,0,0.06) 4px
+    ),
+    repeating-linear-gradient(
+      to right,
+      transparent 0px,
+      rgba(255,0,0,0.04) 45px,
+      transparent 45px,
+      transparent 90px
+    );
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,0.15) 0%,transparent 100%);
+  -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,0.15) 0%,transparent 100%);
+  z-index:0;pointer-events:none;
+}
+
+.buildings{
+  position:absolute;bottom:0;left:0;width:100%;height:50%;
+  background:
+    linear-gradient(to top,transparent 65%,rgba(10,0,0,0.4) 100%),
+    repeating-linear-gradient(
+      to right,
+      transparent 0px, transparent 18px,
+      rgba(255,0,0,0.04) 18px, rgba(255,0,0,0.04) 20px,
+      transparent 20px, transparent 42px,
+      rgba(255,0,0,0.025) 42px, rgba(255,0,0,0.025) 44px,
+      transparent 44px, transparent 65px,
+      rgba(255,0,0,0.05) 65px, rgba(255,0,0,0.05) 67px,
+      transparent 67px, transparent 95px
+    );
+  z-index:0;pointer-events:none;
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,0.08) 0%,transparent 100%);
+  -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,0.08) 0%,transparent 100%);
+}
+
+/* ===== SPEED STREAKS ===== */
+.s{
+  position:absolute;height:1.5px;background:linear-gradient(90deg,transparent,rgba(255,0,0,0.5),transparent);
+  z-index:0;pointer-events:none;filter:blur(0.5px);
+}
+.s1{width:50%;top:10%;left:-5%;transform:rotate(-3deg);animation:streak 3.5s ease-in-out infinite}
+.s2{width:35%;top:22%;right:-5%;transform:rotate(2deg);animation:streak 4s ease-in-out infinite 0.7s}
+.s3{width:45%;top:35%;left:-5%;transform:rotate(-1.5deg);animation:streak 3.2s ease-in-out infinite 1.3s}
+.s4{width:30%;top:48%;right:-5%;transform:rotate(1.8deg);animation:streak 4.2s ease-in-out infinite 0.4s}
+.s5{width:55%;top:60%;left:-5%;transform:rotate(-2.5deg);animation:streak 3.8s ease-in-out infinite 1.6s}
+.s6{width:25%;top:75%;right:-5%;transform:rotate(2.2deg);animation:streak 4.8s ease-in-out infinite 2s}
+
+/* ===== RACING TRAILS ===== */
+.t{
+  position:absolute;height:4px;border-radius:50%;
+  z-index:0;pointer-events:none;filter:blur(4px);
+}
+.t1{bottom:18%;right:2%;width:55%;background:linear-gradient(270deg,transparent,#ff0000,rgba(255,0,0,0.4));opacity:0.35}
+.t2{bottom:14%;right:5%;width:38%;background:linear-gradient(270deg,transparent,#ff3333,transparent);opacity:0.2}
+.t3{bottom:22%;left:2%;width:42%;background:linear-gradient(90deg,transparent,#ff0000,transparent);opacity:0.15}
+.t4{bottom:10%;right:12%;width:28%;background:linear-gradient(270deg,transparent,#ff6666,transparent);opacity:0.1}
+
+/* ===== PARTICLES ===== */
+.particles{
+  position:absolute;inset:0;
+  background-image:
+    radial-gradient(2px at 15% 25%,rgba(255,255,255,0.04),transparent),
+    radial-gradient(1.5px at 35% 65%,rgba(255,255,255,0.025),transparent),
+    radial-gradient(2px at 55% 18%,rgba(255,255,255,0.035),transparent),
+    radial-gradient(1.5px at 75% 45%,rgba(255,255,255,0.02),transparent),
+    radial-gradient(2px at 8% 75%,rgba(255,255,255,0.03),transparent),
+    radial-gradient(1.5px at 65% 85%,rgba(255,255,255,0.025),transparent),
+    radial-gradient(2px at 85% 12%,rgba(255,255,255,0.03),transparent),
+    radial-gradient(1.5px at 45% 50%,rgba(255,255,255,0.02),transparent);
+  z-index:0;pointer-events:none;
+}
+
+/* ===== MAIN TITLE ===== */
+.title-block{
+  text-align:center;
+  padding:25px 0 5px;
+  position:relative;
+  z-index:3;
+}
+.title-block h1{
+  font-family:'Anton',sans-serif;
+  font-size:clamp(55px,12vw,155px);
+  text-transform:uppercase;
+  letter-spacing:12px;
+  transform:skew(-10deg);
+  color:#cc0000;
+  -webkit-text-stroke:1px rgba(255,0,0,0.15);
+  text-shadow:
+    0 0 15px rgba(255,0,0,0.5),
+    0 0 40px rgba(255,0,0,0.25),
+    0 0 80px rgba(255,0,0,0.1),
+    5px 5px 0 #000,
+    8px 8px 0 rgba(0,0,0,0.6),
+    12px 12px 10px rgba(0,0,0,0.3);
+  animation:flicker 4s ease-in-out infinite;
+  position:relative;
+  display:inline-block;
+  background:linear-gradient(180deg,#ff1a1a 15%,#cc0000 45%,#990000 80%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  line-height:0.95;
+}
+.title-streak{
+  position:absolute;top:50%;left:-20%;width:140%;height:55%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.04),transparent);
+  filter:blur(25px);
+  z-index:-1;
+  animation:sweep 7s ease-in-out infinite;
+}
+
+/* ===== HERO GRID ===== */
+.hero-grid{
+  max-width:1400px;
+  margin:0 auto;
+  width:100%;
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
+  padding:10px 0 20px;
+  flex:1;
+}
+
+/* ===== LEFT ===== */
+.left-side{position:relative}
+
+.headset-circle{
+  width:80px;height:80px;border-radius:50%;
+  background:linear-gradient(135deg,rgba(200,0,0,0.2),rgba(0,0,0,0.4));
+  border:2px solid rgba(255,0,0,0.35);
+  display:flex;align-items:center;justify-content:center;
+  font-size:34px;color:#ff0000;
+  margin-bottom:16px;
+  box-shadow:0 0 30px rgba(255,0,0,0.12),inset 0 0 20px rgba(255,0,0,0.03);
+  backdrop-filter:blur(8px);
+  animation:pulseGlow 3s ease-in-out infinite;
+}
+
+.oval-badge{
+  display:inline-flex;align-items:center;gap:14px;
+  padding:12px 28px;
+  border-radius:50px;
+  background:linear-gradient(135deg,rgba(255,255,255,0.07),rgba(255,0,0,0.05));
+  border:1px solid rgba(255,0,0,0.25);
+  backdrop-filter:blur(10px);
+  margin-bottom:22px;
+  box-shadow:0 0 20px rgba(255,0,0,0.08);
+}
+.oval-badge img{width:60px;height:60px;border-radius:8px;object-fit:contain}
+.oval-badge span{font-size:16px;font-weight:800;color:#fff;letter-spacing:2px}
+
+.slogan-text{}
+.slogan-text .l{
+  font-size:clamp(24px,3.8vw,52px);
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  line-height:1.1;
+  text-shadow:0 3px 15px rgba(0,0,0,0.9),0 0 25px rgba(255,0,0,0.08);
+}
+.slogan-text .l.w{color:#fff}
+.slogan-text .l.r{color:#ff0000;text-shadow:0 0 30px rgba(255,0,0,0.35),0 3px 15px rgba(0,0,0,0.9)}
+.slogan-text .l.hl span{color:#ff0000;text-shadow:0 0 25px rgba(255,0,0,0.25)}
+
+/* ===== RIGHT ===== */
+.right-side{position:relative;display:flex;flex-direction:column;align-items:center}
+
+.car-container{
+  position:relative;
+  width:100%;
+  max-width:640px;
+}
+
+.car-container .car-img{
+  width:100%;
+  position:relative;
+  z-index:2;
+  filter:
+    hue-rotate(210deg) saturate(1.5) brightness(1.05)
+    drop-shadow(0 0 30px rgba(255,0,0,0.2))
+    drop-shadow(0 0 60px rgba(255,0,0,0.08));
+  animation:float 5s ease-in-out infinite;
+}
+
+/* red underglow */
+.car-glow-bottom{
+  position:absolute;
+  bottom:-30px;left:6%;width:88%;height:75px;
+  background:radial-gradient(ellipse at center,rgba(255,0,0,0.5) 0%,transparent 70%);
+  filter:blur(30px);
+  z-index:1;
+  animation:pulseGlow 3s ease-in-out infinite;
+}
+
+.ground-reflect{
+  position:absolute;
+  bottom:-50px;left:2%;width:96%;height:50px;
+  background:linear-gradient(to bottom,rgba(255,0,0,0.2),transparent);
+  filter:blur(20px);
+  z-index:1;
+  opacity:0.35;
+}
+
+/* road neon trails */
+.road-trails{
+  position:absolute;
+  bottom:-38px;left:-8%;width:116%;height:18px;
+  background:linear-gradient(90deg,transparent,rgba(255,0,0,0.35),rgba(255,0,0,0.5),rgba(255,0,0,0.35),transparent);
+  filter:blur(14px);
+  z-index:1;
+  opacity:0.45;
+}
+
+.car-badge-label{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:16px;
+  padding:8px 24px;
+  background:rgba(255,0,0,0.07);
+  border:1px solid rgba(255,0,0,0.2);
+  border-radius:50px;
+  color:#ff4444;
+  font-size:14px;font-weight:700;
+  letter-spacing:2px;
+  backdrop-filter:blur(8px);
+  box-shadow:0 0 15px rgba(255,0,0,0.06);
+}
+.car-badge-label img{width:40px;height:40px;border-radius:6px;object-fit:contain}
+
+/* ===== CONTENT BELOW ===== */
+.content-wrap{
+  max-width:1400px;
+  margin:0 auto;
+  padding:0 20px 30px;
+  position:relative;
+  z-index:2;
+  width:100%;
+}
+
+/* ===== ANNOUNCEMENT ===== */
+.announce-panel{
+  background:rgba(0,0,0,0.55);
+  backdrop-filter:blur(20px);
+  border:2px solid rgba(255,0,0,0.3);
+  border-radius:18px;
+  padding:18px 30px;
+  text-align:center;
+  margin-bottom:14px;
+  box-shadow:0 0 25px rgba(255,0,0,0.08);
+  animation:neonPulse 4s ease-in-out infinite;
+  position:relative;
+  overflow:hidden;
+}
+.announce-panel::before{
+  content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.03),transparent);
+  animation:sweep 6s ease-in-out infinite;
+}
+.announce-panel p{
+  font-family:'Anton',sans-serif;
+  font-size:clamp(14px,2.2vw,26px);
+  text-transform:uppercase;
+  letter-spacing:2px;
+  color:#fff;
+}
+.announce-panel p span{color:#ff0000;text-shadow:0 0 20px rgba(255,0,0,0.3)}
+
+/* ===== LOCATION ===== */
+.location-panel{
+  background:rgba(0,0,0,0.45);
+  backdrop-filter:blur(16px);
+  border:1px solid rgba(255,0,0,0.2);
+  border-radius:16px;
+  padding:14px 24px;
+  margin-bottom:22px;
+  display:flex;align-items:center;gap:16px;
+  box-shadow:0 0 15px rgba(255,0,0,0.05);
+}
+.location-panel .pin{
+  width:56px;height:56px;min-width:56px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#cc0000,#8b0000);
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;color:#fff;
+  box-shadow:0 0 20px rgba(255,0,0,0.3);
+}
+.location-panel p{
+  font-size:clamp(10px,1.2vw,17px);
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:#fff;
+  line-height:1.4;
+}
+.location-panel p .hl{color:#ffd700;font-weight:800}
+
+/* ===== FEATURE CARDS ===== */
+.features-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-bottom:22px;
+}
+
+.fcard{
+  background:rgba(0,0,0,0.5);
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(255,0,0,0.2);
+  border-radius:20px;
+  padding:22px 18px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  transition:0.4s;
+  cursor:default;
+}
+.fcard::before{
+  content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;
+  background:radial-gradient(circle at center,rgba(255,0,0,0.05),transparent 60%);
+  opacity:0;transition:0.4s;
+}
+.fcard:hover{
+  border-color:#ff0000;
+  transform:translateY(-5px);
+  box-shadow:0 0 35px rgba(255,0,0,0.12),0 0 60px rgba(255,0,0,0.06);
+}
+.fcard:hover::before{opacity:1}
+
+.fcard .ficon{
+  width:60px;height:60px;border-radius:16px;
+  background:linear-gradient(135deg,rgba(200,0,0,0.2),rgba(0,0,0,0.3));
+  border:1px solid rgba(255,0,0,0.3);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 10px;
+  font-size:26px;color:#ff0000;
+  box-shadow:0 0 15px rgba(255,0,0,0.08);
+}
+.fcard .excl{
+  font-size:30px;font-weight:900;
+  color:#ff0000;line-height:1;
+  margin-top:4px;
+  text-shadow:0 0 15px rgba(255,0,0,0.2);
+}
+.fcard h3{
+  font-family:'Anton',sans-serif;
+  font-size:clamp(13px,1.5vw,20px);
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:#fff;
+  line-height:1.3;
+}
+.fcard .sub-icons{
+  margin-top:4px;
+  font-size:18px;
+  color:#ffd700;
+  letter-spacing:6px;
+}
+.fcard .sub-icons .blue{color:#0047ff;margin-right:4px}
+
+/* ===== SOCIAL ===== */
+.social-wrap{margin-bottom:20px}
+.social-strip{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:0;
+  flex-wrap:wrap;
+  background:rgba(0,0,0,0.35);
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(255,0,0,0.1);
+  border-radius:50px;
+  padding:6px 8px;
+  max-width:960px;
+  margin:0 auto;
+}
+.slink{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 18px;
+  text-decoration:none;
+  color:#fff;
+  font-size:13px;font-weight:500;
+  transition:0.3s;
+  border-radius:40px;
+  white-space:nowrap;
+}
+.slink i{font-size:18px}
+.slink .fa-whatsapp{color:#25d366;text-shadow:0 0 10px rgba(37,211,102,0.3)}
+.slink .fa-tiktok{color:#fff}
+.slink .fa-instagram{color:#e4405f;text-shadow:0 0 10px rgba(228,64,95,0.3)}
+.slink .fa-facebook{color:#1877f2;text-shadow:0 0 10px rgba(24,119,242,0.3)}
+.slink .fa-envelope{color:#ea4335}
+.slink:hover{background:rgba(255,0,0,0.08);transform:translateY(-2px)}
+.sdiv{width:1px;height:24px;background:rgba(255,255,255,0.06);flex-shrink:0}
+
+/* ===== BOTTOM TAGLINE ===== */
+.tagline-area{
+  text-align:center;
+  padding:10px 0;
+}
+.tag-row{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:30px;
+  flex-wrap:wrap;
+}
+.tag-item{
+  font-family:'Anton',sans-serif;
+  font-size:clamp(32px,5.5vw,85px);
+  text-transform:uppercase;
+  letter-spacing:4px;
+  position:relative;
+  color:#fff;
+  padding:0 12px;
+}
+.tag-item.left::after{
+  content:'';position:absolute;
+  bottom:-10px;left:-8%;width:116%;height:12px;
+  background:linear-gradient(90deg,transparent,#0047ff,#0066ff,transparent);
+  border-radius:4px;
+  filter:blur(5px);
+}
+.tag-item.right::after{
+  content:'';position:absolute;
+  bottom:-10px;left:-8%;width:116%;height:12px;
+  background:linear-gradient(90deg,transparent,#cc0000,#ff0000,transparent);
+  border-radius:4px;
+  filter:blur(5px);
+}
+.tagline-yango{
+  font-family:'Anton',sans-serif;
+  font-size:clamp(18px,2.5vw,38px);
+  color:#ff0000;
+  text-transform:uppercase;
+  letter-spacing:10px;
+  margin-top:10px;
+  text-shadow:0 0 30px rgba(255,0,0,0.2);
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1100px){
+  .hero-grid{grid-template-columns:1fr;text-align:center;padding-top:0}
+  .left-side{display:flex;flex-direction:column;align-items:center}
+  .slogan-text .l{font-size:26px}
+  .car-container .car-img{max-width:450px}
+
+}
+@media(max-width:768px){
+  .hero{padding:0 20px}
+  .title-block h1{font-size:46px;letter-spacing:6px}
+  .slogan-text .l{font-size:20px}
+  .car-container .car-img{max-width:330px}
+  .car-badge-label{font-size:13px;padding:5px 16px}
+  .features-row{grid-template-columns:1fr}
+  .social-strip{border-radius:20px;padding:8px}
+  .slink{padding:6px 10px;font-size:11px}
+  .sdiv{display:none}
+  .tag-row{gap:12px}
+  .tag-item{font-size:28px}
+  .location-panel{flex-direction:column;text-align:center}
+  .content-wrap{padding:0 16px 20px}
+}
+@media(max-width:480px){
+  .title-block h1{font-size:32px;letter-spacing:4px}
+  .slogan-text .l{font-size:16px}
+  .car-container .car-img{max-width:250px}
+  .car-badge-label{font-size:11px;padding:5px 14px}
+  .announce-panel{padding:10px 14px}
+  .announce-panel p{font-size:11px}
+  .fcard{padding:16px 12px}
+  .fcard h3{font-size:12px}
+  .tag-item{font-size:22px}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+
+  <!-- skyline -->
+  <div class="city-skyline"></div>
+  <div class="buildings"></div>
+
+  <!-- speed streaks -->
+  <div class="s s1"></div><div class="s s2"></div><div class="s s3"></div>
+  <div class="s s4"></div><div class="s s5"></div><div class="s s6"></div>
+
+  <!-- racing trails -->
+  <div class="t t1"></div><div class="t t2"></div><div class="t t3"></div><div class="t t4"></div>
+
+  <!-- particles -->
+  <div class="particles"></div>
+
+  <!-- ===== MAIN TITLE ===== -->
+  <div class="title-block">
+    <div class="title-streak"></div>
+    <h1>YANGO</h1>
+  </div>
+
+  <!-- ===== HERO GRID ===== -->
+  <div class="hero-grid">
+
+    <!-- LEFT -->
+    <div class="left-side">
+
+      <div class="headset-circle">
+        <i class="fas fa-headset"></i>
+      </div>
+
+      <div class="oval-badge">
+        <img src="https://i.postimg.cc/pd0k8gqn/Whats-App-Image-2026-05-31-at-18-12-38-(1).jpg?v=2" alt="">
+        <span>MATEO RIDE</span>
+      </div>
+
+      <div class="slogan-text">
+        <div class="l w">DRIVE MORE.</div>
+        <div class="l w">EARN MORE.</div>
+        <div class="l hl"><span>YANGO</span> IS THE WAY!</div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right-side">
+
+      <div class="car-container">
+        <img class="car-img" src="https://pngimg.com/d/hyundai_PNG11233.png" alt="">
+
+        <div class="car-glow-bottom"></div>
+        <div class="ground-reflect"></div>
+        <div class="road-trails"></div>
+      </div>
+
+      <div class="car-badge-label">
+        <img src="https://i.postimg.cc/pd0k8gqn/Whats-App-Image-2026-05-31-at-18-12-38-(1).jpg?v=2" alt="">
+        YANGO LET'S GO!
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== CONTENT BELOW ===== -->
+<div class="content-wrap">
+
+  <!-- ANNOUNCEMENT -->
+  <div class="announce-panel">
+    <p>MATEORIDE, THE OFFICIAL <span>YANGO</span> #1 PARTNER.</p>
+  </div>
+
+  <!-- LOCATION -->
+  <div class="location-panel">
+    <div class="pin"><i class="fas fa-map-marker-alt"></i></div>
+    <p>VISIT OUR OFFICE IN KIGALI, ALONG <span class="hl">STONE ROAD KN87</span> NEXT TO OKAPI HOTEL</p>
+  </div>
+
+  <!-- FEATURE CARDS -->
+  <div class="features-row">
+
+    <a href="https://forms.fleet.yango.com/forms?ref_id=b97c182f57f84f42a16011b1068ac445" target="_blank" class="fcard" style="text-decoration:none;color:#fff;display:block">
+      <div class="ficon"><i class="fas fa-user-plus"></i></div>
+      <h3>REGISTER WITH YANGO HERE</h3>
+      <div class="excl">!!</div>
+    </a>
+
+    <div class="fcard">
+      <div class="ficon"><i class="fas fa-chart-line"></i></div>
+      <h3>EARN BIG,<br>EARN EVERYDAY</h3>
+      <div class="sub-icons"><i class="fas fa-sync-alt blue"></i> $$</div>
+      <div class="excl">!!</div>
+    </div>
+
+    <div class="fcard">
+      <div class="ficon"><i class="fas fa-gift"></i></div>
+      <h3>DAILY AND WEEKLY BONUSES</h3>
+      <div class="sub-icons">$ $ $</div>
+    </div>
+
+  </div>
+
+  <!-- SOCIAL -->
+  <div class="social-wrap">
+    <div class="social-strip">
+
+      <a href="https://wa.me/260799984010" target="_blank" class="slink">
+        <i class="fab fa-whatsapp"></i> +260 799 984 010
+      </a>
+      <div class="sdiv"></div>
+
+      <a href="https://wa.me/260761412670" target="_blank" class="slink">
+        <i class="fab fa-whatsapp"></i> +260 761 412 670
+      </a>
+      <div class="sdiv"></div>
+
+      <a href="https://tiktok.com/@yango.mateorides" target="_blank" class="slink">
+        <i class="fab fa-tiktok"></i> @yango.mateorides
+      </a>
+      <div class="sdiv"></div>
+
+      <a href="https://instagram.com/mateo.kigali" target="_blank" class="slink">
+        <i class="fab fa-instagram"></i> @mateo.kigali
+      </a>
+      <div class="sdiv"></div>
+
+      <a href="https://facebook.com" target="_blank" class="slink">
+        <i class="fab fa-facebook"></i> Mateo Rides
+      </a>
+      <div class="sdiv"></div>
+
+      <a href="mailto:mateo.kigali@gmail.com" class="slink">
+        <i class="fas fa-envelope"></i> mateo.kigali@gmail.com
+      </a>
+
+    </div>
+  </div>
+
+  <!-- BOTTOM TAGLINE -->
+  <div class="tagline-area">
+    <div class="tag-row">
+      <span class="tag-item left">YOUR RIDE.</span>
+      <span class="tag-item right">YOUR INCOME.</span>
+    </div>
+    <div class="tagline-yango">YANGO</div>
+  </div>
+
+</div>
+
+</body>
+</html>
