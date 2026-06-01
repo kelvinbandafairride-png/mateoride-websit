@@ -251,17 +251,18 @@ body{
 .car-badge-label{
   display:inline-flex;align-items:center;gap:12px;
   margin-top:20px;
-  padding:12px 30px;
+  padding:14px 36px;
   background:rgba(255,0,0,0.07);
   border:1px solid rgba(255,0,0,0.2);
   border-radius:50px;
   color:#ff4444;
-  font-size:18px;font-weight:700;
+  font-size:clamp(18px,2.5vw,32px);
+  font-weight:700;
   letter-spacing:2px;
   backdrop-filter:blur(8px);
   box-shadow:0 0 15px rgba(255,0,0,0.06);
 }
-.car-badge-label img{width:80px;height:auto;border-radius:6px;object-fit:contain}
+.car-badge-label img{width:clamp(80px,10vw,130px);height:auto;border-radius:6px;object-fit:contain}
 
 /* car branding overlays */
 .car-brand{
@@ -325,7 +326,7 @@ body{
 }
 .announce-panel p{
   font-family:'Anton',sans-serif;
-  font-size:clamp(18px,3vw,32px);
+  font-size:clamp(22px,3.5vw,38px);
   text-transform:uppercase;
   letter-spacing:3px;
   color:#fff;
@@ -527,7 +528,7 @@ body{
   .hero{padding:0 20px}
   .slogan-text .l{font-size:22px}
   .car-container .car-img{max-width:450px}
-  .car-badge-label{font-size:14px;padding:6px 18px}
+  .car-badge-label{font-size:16px;padding:8px 20px}
   .features-row{grid-template-columns:1fr}
   .location-panel{flex-direction:column;text-align:center}
   .content-wrap{padding:0 16px 20px}
@@ -536,9 +537,9 @@ body{
 @media(max-width:480px){
   .slogan-text .l{font-size:20px}
   .car-container .car-img{max-width:340px}
-  .car-badge-label{font-size:13px;padding:5px 16px}
+  .car-badge-label{font-size:15px;padding:6px 16px}
   .announce-panel{padding:12px 14px}
-  .announce-panel p{font-size:15px;letter-spacing:1px}
+  .announce-panel p{font-size:17px;letter-spacing:1px}
   .fcard{padding:16px 12px}
   .fcard h3{font-size:20px;letter-spacing:0.5px}
   .tag-item{font-size:26px}
